@@ -48,7 +48,7 @@ function App() {
 
   
 
-      <div className="recipeTile">
+      <div className="container">
         {recipes.map((recipe) => {
           return <RecipeTile recipe = {recipe}/>
         })}
