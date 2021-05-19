@@ -3,11 +3,13 @@ import './App.css';
 import Axios from "axios"
 import headerIcon from './assets/images/headerIcon.png'
 import { useState } from 'react';
+import RecipeTile from './RecipeTile';
 
 //hi
 function App() {
 
-  var [query, setQuery] = useState("")
+  var [query, setQuery] = useState("");
+  var [recipes, setRecipes] = useState([]);
   
   const YOUR_APP_ID = "bbd18a7c";
   const YOUR_APP_KEY = "7aeeb949663b0c475df765e6a981bdc2";
@@ -16,12 +18,13 @@ function App() {
 
   async function getRecipes(){
     var result = await Axios.get(url);
-    console.log(result)
+    setRecipes(result.data.hits);
+    console.log(result);  
   }
 
   const onSubmit = (e) => {
     e.preventDefault();
-    getRecipes()
+    getRecipes();
   };
 
   return (
@@ -41,7 +44,14 @@ function App() {
         value="Search"
         />
       </form>
+
+      <div>
+        {recipes.map((recipe) => {
+          return <RecipeTile recipe = {recipe}/>
+        })}
+      </div>
     </div>
+    
   );
 }
 
