@@ -19,10 +19,15 @@ function App() {
     console.log(result)
   }
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    getRecipes()
+  };
+
   return (
     <div className="app">
       <h1 onClick={getRecipes}>Food Recipe Collection<img className="headerIcon" src={headerIcon} alt="fireSpot"/></h1>
-      <form className="appSearchForm">
+      <form className="appSearchForm" onSubmit={onSubmit}>
         <input 
         type="text" 
         className="appInput"
