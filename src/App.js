@@ -11,6 +11,7 @@ function App() {
   var [query, setQuery] = useState("");
   var [recipes, setRecipes] = useState([]);
   
+  
   const YOUR_APP_ID = "bbd18a7c";
   const YOUR_APP_KEY = "7aeeb949663b0c475df765e6a981bdc2";
   
@@ -45,7 +46,9 @@ function App() {
         />
       </form>
 
-      <div>
+  
+
+      <div className="recipeTile">
         {recipes.map((recipe) => {
           return <RecipeTile recipe = {recipe}/>
         })}
